@@ -1,4 +1,4 @@
-** COMMANDS **
+## COMMANDS ##
 
 ## WEASYPRINT PROBLEMS (m4 MACBOOK) ##
 sudo ln -s /opt/homebrew/lib/libgobject-2.0.0.dylib /opt/homebrew/lib/libgobject-2.0-0
