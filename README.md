@@ -4,7 +4,9 @@
 1. Full eCommerce functionality
 2. Emails
 3. Generate dynamic PDF invoices
-4. Message queue
+4. RabbitMQ message server
+5. Celery and Celery Beat for tasks & scheduled tasks
+6. Django Flower to monotior Celery workers
 
 ## INSTRUCTIONS ##
 1. Clone the repo
