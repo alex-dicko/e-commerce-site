@@ -1,6 +1,6 @@
 # eCommerce Template #
 
-### FEATURES ###
+## FEATURES ##
 1. Full eCommerce functionality
 2. Emails
 3. Generate dynamic PDF invoices
