@@ -13,7 +13,7 @@ export PKG_CONFIG_PATH=/opt/homebrew/lib/pkgconfig:$PKG_CONFIG_PATH
 I believe all M# Macbooks have this problem
 
 ## STRIPE CLI ##
-stripe listen --forward-to localhost:8000/webhook/ 
+stripe listen --forward-to localhost:8000/payment/webhook/ 
 
 ## CELERY ##
 celery -A project beat --loglevel=info
