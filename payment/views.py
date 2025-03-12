@@ -14,7 +14,7 @@ def payment_process(request):
 
     if request.method == 'POST':
         success_url = request.build_absolute_uri(
-            reverse("payment:completed")
+            reverse("payment:completed", args=[str(order.id)])
         )
         cancel_url = request.build_absolute_uri(
             reverse('payment:cancelled')
@@ -46,8 +46,15 @@ def payment_process(request):
     else:
         return render(request, 'shop/payment/process.html', locals())
 
-def payment_completed(request):
+def payment_completed(request, order_id):
+    order = get_object_or_404(Order, id=order_id)
+
+    if request.session.get('order_id'):
+        del request.session['order_id']
+    
     return render(request, 'shop/payment/completed.html')
+    
+        
 
 def payment_cancelled(request):
     return render(request, 'shop/payment/cancelled.html')

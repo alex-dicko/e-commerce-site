@@ -1,0 +1,105 @@
+#cart {
+    padding: 40px 0;
+    .container {
+        h1 {
+            font-size: 40px;
+            font-weight: bold;
+            padding: 0 0 20px 0;
+        }
+
+        table {
+            width: 100%;
+            thead {
+                background-color: #6B6D76;
+                tr {
+                    th {
+                        padding: 20px 0;
+                        text-align: left;
+                        color: white;
+                    }
+                    th:first-child {
+                        padding-left: 10px;
+                    }
+                }
+            }
+            tbody {
+                tr {
+                    td {
+                        img {
+                            aspect-ratio: 1 / 1;
+                            width: 100px;
+                        }
+                    }
+                }
+
+                tr:nth-child(even) {
+                    background-color: #D7D9D7;
+                }
+            }
+            input {
+                background-color: #6B6D76;
+                padding: 5px 10px;
+                color: white;
+                font-weight: 600;
+                &:hover {
+                    cursor: pointer;
+                }
+            }
+        }
+
+    }
+
+    .total {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        margin-top: 10px;
+    }
+}
+
+.actions {
+    margin-top: 40px;
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    justify-content: flex-end;
+
+    a {
+        padding: 10px 15px;
+        background-color: #6B6D76;
+        color: white;
+        font-weight: 600;
+        &:hover {
+            cursor: pointer;
+        }
+    }
+
+    a:first-child {
+        border: 1px solid #6B6D76;
+        background-color: white;
+        color: #6B6D76;
+        padding: 10px 15px;
+        font-weight: 600;
+        &:hover {
+            cursor: pointer;
+        }
+    }
+}
+
+#pay_now_button {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    input {
+        padding: 5px 10px;
+        background-color: #6B6D76;
+        color: white;
+        font-weight: 600;
+        width: fit-content;
+        margin-top: 20px;
+        &:hover {
+            cursor: pointer;
+        }
+    }
+
+}

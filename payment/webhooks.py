@@ -3,7 +3,7 @@ from django.conf import settings
 from django.http import HttpResponse
 from django.views.decorators.csrf import csrf_exempt
 from orders.models import Order
-from .tasks import payment_successful
+from .tasks import payment_successful, payment_refunded
 import json
 
 @csrf_exempt
@@ -34,6 +34,17 @@ def stripe_webhook(request):
                 order.stripe_id = session.payment_intent
                 order.save()
                 payment_successful.delay(order.id)
+    if event.type == 'charge.refunded':
+        session = event.data.object
+        try:
+            order = Order.objects.get(
+                stripe_id=session.payment_intent
+            )
+        except Order.DoesNotExist:
+            return HttpResponse(status=404)
+        order.status = "refunded"
+        order.save()
+        payment_refunded.delay(order.id)
     else:
         print('Unhandled event type {}'.format(event.type))
 

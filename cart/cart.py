@@ -50,8 +50,8 @@ class Cart:
     def get_total_price(self):
         price = 0
         for item in self.cart.values():
-            price += float(item['price']) * int(item['quantity'])  # Convert price to float
-        return price
+            price += float(item['price']) * int(item['quantity'])
+        return round(price, 2)
 
     
     def clear(self):

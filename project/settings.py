@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/5.1/ref/settings/
 
 from pathlib import Path
 from decouple import config
+from celery.schedules import crontab
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -32,6 +33,13 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    # "unfold",  # before django.contrib.admin
+    # "unfold.contrib.filters",  # optional, if special filters are needed
+    # "unfold.contrib.forms",  # optional, if special form elements are needed
+    # "unfold.contrib.inlines",  # optional, if special inlines are needed
+    # "unfold.contrib.import_export",  # optional, if django-import-export package is used
+    # "unfold.contrib.guardian",  # optional, if django-guardian package is used
+    # "unfold.contrib.simple_history", 
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -43,6 +51,7 @@ INSTALLED_APPS = [
     "cart",
     "orders",
     "payment",
+    'django_celery_beat',
 ]
 
 MIDDLEWARE = [
@@ -142,9 +151,27 @@ AUTH_USER_MODEL = 'members.User'
 
 ## SHOP
 CART_SESSION_ID = 'cart'
-EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = False
+EMAIL_HOST_USER = config("EMAIL_HOST_USER")
+EMAIL_HOST_PASSWORD = config("EMAIL_HOST_PASSWORD")
+DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
 
 
 STRIPE_PUBLISHABLE_KEY = config('STRIPE_PUBLISHABLE_KEY')
 STRIPE_SECRET_KEY = config('STRIPE_SECRET_KEY')
 STRIPE_API_VERSION = '2024-04-10'
+
+CELERY_BROKER_URL = 'amqp://guest:guest@127.0.0.1:5672//'
+CELERY_ACCEPT_CONTENT = ['json']
+CELERY_TASK_SERIALIZER = 'json'
+
+CELERY_BEAT_SCHEDULE = {
+    'remove_pending_orders': {
+        'task': 'orders.tasks.remove_pending_orders',
+        'schedule': 05.0, #every night at 12
+    },
+}
+
