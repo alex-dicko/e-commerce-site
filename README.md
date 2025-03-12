@@ -10,6 +10,10 @@
 
 ### WEASYPRINT PROBLEMS (m4 MACBOOK) ###
 
+When running the server, you may get errors due to WeasyPrint (used for generating PDF Invoices)
+
+I found that this fixes it.
+
 **Run these in your terminal**\
 `sudo ln -s /opt/homebrew/lib/libgobject-2.0.0.dylib /opt/homebrew/lib/libgobject-2.0-0
 sudo ln -s /opt/homebrew/lib/libpango-1.0.0.dylib /opt/homebrew/lib/libpango-1.0-0
