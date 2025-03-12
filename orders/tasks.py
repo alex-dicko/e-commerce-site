@@ -21,6 +21,6 @@ def order_created(order_id):
 
 @shared_task
 def remove_pending_orders():
-    date_10_days_ago = now() - timedelta(days=10)
-    orders = Order.objects.filter(created__lt=date_10_days_ago, status='pending')
+    one_hour_ago = now() - timedelta(hours=1)
+    orders = Order.objects.filter(created__lt=one_hour_ago, status='pending')
     orders.delete()

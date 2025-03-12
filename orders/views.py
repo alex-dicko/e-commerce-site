@@ -17,9 +17,8 @@ def order_create(request):
                     price=item['price'],
                     quantity=item['quantity']
                 )
-            cart.clear()
             order_created.delay(order.id)
-
+            cart.clear()
             request.session['order_id'] = str(order.id)
             return redirect('payment:process')
             # return render(
