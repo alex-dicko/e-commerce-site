@@ -9,12 +9,15 @@
 ## COMMANDS ##
 
 ### WEASYPRINT PROBLEMS (m4 MACBOOK) ###
+
+**Run these in your terminal**
 `sudo ln -s /opt/homebrew/lib/libgobject-2.0.0.dylib /opt/homebrew/lib/libgobject-2.0-0
 sudo ln -s /opt/homebrew/lib/libpango-1.0.0.dylib /opt/homebrew/lib/libpango-1.0-0
 sudo ln -s /opt/homebrew/lib/libharfbuzz.0.dylib /opt/homebrew/lib/libharfbuzz-0
 sudo ln -s /opt/homebrew/lib/libfontconfig.1.dylib /opt/homebrew/lib/libfontconfig-1
 sudo ln -s /opt/homebrew/lib/libpangoft2-1.0.dylib /opt/homebrew/lib/libpangoft2-1.0-0`
 
+**Add this to your .zshrc or bash_profile**
 `export DYLD_LIBRARY_PATH=/opt/homebrew/lib:$DYLD_LIBRARY_PATH
 export PKG_CONFIG_PATH=/opt/homebrew/lib/pkgconfig:$PKG_CONFIG_PATH`
 
