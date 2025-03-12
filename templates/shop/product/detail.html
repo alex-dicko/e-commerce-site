@@ -24,6 +24,7 @@
             </a>
           </h2>
           <p class="price">${{ product.price }}</p>
+          <p class="price">In Stock: {{ product.stock }}</p>
           {{ product.description|linebreaks }}
           <form action="{% url 'cart:cart_add' product.id %}" method="post">
             {{ cart_product_form }}

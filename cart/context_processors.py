@@ -1,7 +1,7 @@
-from cart.cart import Cart
+from cart.cart import get_cart
 
-def get_cart(request):
-    cart = Cart(request)
+def cart(request):
+    cart = get_cart(request)
 
     return {
         "cart": cart,

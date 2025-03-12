@@ -26,7 +26,7 @@
         </tr>
       </thead>
       <tbody>
-        {% for item in cart %}
+        {% for item in cart.get_items %}
           {% with product=item.product %}
             <tr>
               <td>
@@ -37,10 +37,10 @@
               </td>
               <td>{{ product.name }}</td>
               <td>
-                <form action="{% url 'cart:cart_add' product.id %}" method="post">
-                  {{ item.update_quantity_form.quantity }}
-                  {{ item.update_quantity_form.override }}
-                  <input type="submit" value="Update">
+                <form action="{% url 'cart:cart_update' product.id %}" method="post" id="quant_form">
+                  <input type="hidden" name="initial_quantity" value="{{ item.quantity }}">
+                  <input type="number" name="new_quantity" class="new_quantity" value="{{ item.quantity }}" min="0">
+                  <!-- <input type="submit" value="Update"> -->
                   {% csrf_token %}
                 </form>
               </td>
@@ -50,8 +50,8 @@
                   {% csrf_token %}
                 </form>
               </td>
-              <td class="num">${{ item.price }}</td>
-              <td class="num">${{ item.total_price }}</td>
+              <td class="num">${{ product.price }}</td>
+              <td class="num">${{ item.get_total_price }}</td>
             </tr>
           {% endwith %}
         {% endfor %}
@@ -69,4 +69,12 @@
     </p>
   </div>  
 </section>
+{% endblock %}
+
+{% block script %}
+<script>
+  $(".new_quantity").on("change", function () {
+    $(this).parent().submit()
+  });
+</script>
 {% endblock %}

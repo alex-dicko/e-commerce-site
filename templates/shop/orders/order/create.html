@@ -22,10 +22,10 @@
         <div class="order-info">
           <h3>{% translate "Your order" %}</h3>
           <ul>
-            {% for item in cart %}
+            {% for item in cart.get_items %}
               <li>
                 {{ item.quantity }}x {{ item.product.name }}
-                <span>${{ item.total_price|floatformat:2 }}</span>
+                <span>${{ item.get_total_price|floatformat:2 }}</span>
               </li>
             {% endfor %}
             {% if cart.coupon %}
