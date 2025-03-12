@@ -6,6 +6,19 @@
 3. Generate dynamic PDF invoices
 4. Message queue
 
+## INSTRUCTIONS ##
+1. Clone the repo
+2. Make a virtual env in the repo
+3. Install requirements: `pip install -r requirements.txt`
+4. Copy the dev.env to make your .env file: `cp dev.env .env`
+5. Fill out .env with your information, its currently set up to use mysql as database.
+6. Migrate: `python manage.py migrate`
+7. Runserver: `python manage.py runserver`
+
+Visit 127.0.0.1:8000 and you should see the site.
+
+Follow the other commands section to fully set up the ecommerce site.
+
 ## COMMANDS ##
 
 ### WEASYPRINT PROBLEMS (m4 MACBOOK) ###
