@@ -4,7 +4,7 @@ from django.conf import settings
 from django.shortcuts import get_object_or_404, redirect, render
 from django.urls import reverse
 from orders.models import Order
-from cart.cart import Cart
+from cart.cart import get_cart
 
 stripe.api_key = settings.STRIPE_SECRET_KEY
 stripe.api_version = settings.STRIPE_API_VERSION
@@ -49,7 +49,7 @@ def payment_process(request):
 
 def payment_completed(request, order_id):
     order = get_object_or_404(Order, id=order_id)
-    cart = Cart(request)
+    cart = get_cart(request)
     cart.clear()
     if request.session.get('order_id'):
         del request.session['order_id']

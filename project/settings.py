@@ -77,7 +77,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
-                'cart.context_processors.get_cart'
+                'cart.context_processors.cart'
             ],
         },
     },
@@ -171,7 +171,11 @@ CELERY_TASK_SERIALIZER = 'json'
 CELERY_BEAT_SCHEDULE = {
     'remove_pending_orders': {
         'task': 'orders.tasks.remove_pending_orders',
-        'schedule': 05.0, #every night at 12
+        'schedule': 10, #every night at 12
+    },
+    'remove_expired_carts': {
+        'task': 'cart.tasks.remove_expired_carts',
+        'schedule': 10, #every night at 12
     },
 }
 
