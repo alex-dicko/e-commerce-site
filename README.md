@@ -1,12 +1,15 @@
 # eCommerce Template #
 
 ## FEATURES ##
-1. Full eCommerce functionality
-2. Emails
-3. Generate dynamic PDF invoices
-4. RabbitMQ message server
-5. Celery and Celery Beat for tasks & scheduled tasks
-6. Django Flower to monotior Celery workers
+1. Products and Categories
+2. Stock Management
+3. Stripe Integration
+4. Cart and Orders
+5. Emails
+6. Generate dynamic PDF invoices
+7. RabbitMQ message server
+8. Celery and Celery Beat for tasks & scheduled tasks
+9. Django Flower to monotior Celery workers
 
 ## INSTRUCTIONS ##
 1. Clone the repo
