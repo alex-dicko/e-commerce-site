@@ -5,11 +5,12 @@
 2. Stock Management
 3. Stripe Integration
 4. Cart and Orders
-5. Emails
-6. Generate dynamic PDF invoices
-7. RabbitMQ message broker
-8. Celery and Celery Beat for tasks & scheduled tasks
-9. Django Flower to monotior Celery workers
+5. Export orders to CSV
+6. Emails
+7. Generate dynamic PDF invoices
+8. RabbitMQ message broker
+9. Celery and Celery Beat for tasks & scheduled tasks
+10. Django Flower to monotior Celery workers
 
 ## INSTRUCTIONS ##
 1. Clone the repo
