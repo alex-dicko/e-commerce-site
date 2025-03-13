@@ -7,7 +7,7 @@
 4. Cart and Orders
 5. Emails
 6. Generate dynamic PDF invoices
-7. RabbitMQ message server
+7. RabbitMQ message broker
 8. Celery and Celery Beat for tasks & scheduled tasks
 9. Django Flower to monotior Celery workers
 
